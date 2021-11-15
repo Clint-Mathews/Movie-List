@@ -6,5 +6,6 @@ export interface MovieCardData {
   length: number,
   index: number,
   finalMovieElementRef: any,
-  movieData: MovieDetails
+  movieData: MovieDetails,
+  url : string
 }
