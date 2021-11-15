@@ -5,6 +5,8 @@ import { useAppDispatch, useAppSelector } from '../../utils/hooks';
 import { actions } from '../../utils/movie-redux';
 import Loader from '../loader';
 import MovieCard from '../movieCard';
+
+// Main Movie List
 function MovieList() {
     const url = window.location.href;
     const movies = useAppSelector((state) => state.movieList.movies);
@@ -19,6 +21,7 @@ function MovieList() {
     const [hasMore, setHasMore] = useState(false);
     const [heading, setHeading] = useState('');
 
+    // Used for infinte srool api call before reaching the end using the buffer. Page updated.
     const finalMovieElementRef = useCallback(node => {
       if (loading) return
       if (observer.current) observer.current.disconnect();
@@ -30,6 +33,7 @@ function MovieList() {
       if (node) observer.current?.observe(node)
     }, [loading, hasMore])
   
+    // Search input with timeout (let's user type, waiting for 1 sec before calling API) to load the whole data and filter out the required result
     useEffect(() => {
         if(!loading) {
             const delayFn = setTimeout(()=>{
@@ -39,10 +43,13 @@ function MovieList() {
         }
     }, [searchTerm]);
 
+
+    // On Page change the movie API is called.
     useEffect(() => {
         getMovieData();
     }, [page]);
 
+    // Updating conditions for checking further loading.
     useEffect(() => {
         if(!searchTerm) {
         setLoading(false);
@@ -50,6 +57,7 @@ function MovieList() {
         }
     }, [movies]);
 
+    // Get Movies Data based on the page and saves data in state and redux
     const getMovieData = () => {
         setLoading(true);
         axios.get(`${url}/assets/API/CONTENTLISTINGPAGE-PAGE${page}.json`)
@@ -64,6 +72,7 @@ function MovieList() {
             });
     }
 
+    // Generate the all pages to get the data from API since we dont have a search API (FE filtering)
     function generatePageArray () {
         let i = 1;
         let returnData = [];
@@ -73,7 +82,7 @@ function MovieList() {
         }
         return returnData;
     }
-
+    // Get all pages to do filtering based on search
     const getAllMovieData = async() => {
         setLoading(true);
         dispatch(actions.reset());
@@ -94,6 +103,7 @@ function MovieList() {
         setHasMore(false);
     }
 
+    // Reset case on back button and on search close
     const resetMovieList = (resetOnBack:boolean = false) => {
         if(toggleSearch || resetOnBack) { 
             setLoading(true);
@@ -104,27 +114,28 @@ function MovieList() {
         }
     }
 
-    const moveToTop = () => {
-        window.scroll({top:0, left:0, behavior: 'smooth'});
-    }
-
     return (
         <div className=" h-screen w-screen relative text-white font-body" style={{ backgroundColor: "#171717" }}>
             <div style={{ backgroundImage: `url(${url}/assets/Slices/nav_bar.png)` }} className="absolute inset-x-0 top-0 flex justify-between p-4 bg-no-repeat bg-contain bg-top w-full h-16" >
                 <div className="flex items-center w-3/5">
                     <button className="w-5" onClick={()=>resetMovieList(true)}>
-                        <img className="object-contain h-5 w-5" src={`${url}/assets/Slices/Back.png`} />
+                        <img alt="Back" className="object-contain h-5 w-5" src={`${url}/assets/Slices/Back.png`} />
                     </button>
                     <span className="ml-1 text-xl font-light whitespace-nowrap">{heading}</span>
-                    {/* </button> */}
                 </div>
                 <div className={`flex items-center w-3/5 ml-1  text-gray-300 relative rounded-full p-2 border-2 ${toggleSearch ? 'bg-black border-white' : 'border-transparent'}`}>
                     <input type="text" placeholder="Search..." value={searchTerm} className={`ml-2 w-full bg-transparent outline-none  transition ease-linear ${toggleSearch ? 'opacity-1' : 'opacity-0'}`} onChange={e=>setSearchTerm(e.target.value)} />
                     <button className="absolute right-0 mr-3 outline-none" onClick={()=>{resetMovieList();setToggleSearch(!toggleSearch);}}>
-                        <img className={`object-contain h-5 w-5`} src={`${url}/assets/Slices/search.png`} />
+                        <img alt="Search" className={`object-contain h-5 w-5`} src={`${url}/assets/Slices/search.png`} />
                     </button>
                 </div>
             </div>
+            {/* Conditional cases based on following cases
+            1. When No data is there
+                1. On Search
+                2. On Loading
+                3. When No Data is there
+            2.When Data is there */}
             {movies.length == 0 ? 
             searchTerm ? 
             <div className="flex align-middle px-4 h-screen w-auto justify-center pt-20">No Movies Found</div>

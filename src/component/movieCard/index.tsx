@@ -2,7 +2,9 @@ import React from 'react'
 import { MovieCardData } from '../../Interfaces/Movie';
 import { movieCardBuffer } from '../../utils/common-constant';
 
+// Component memoized to remove unwanted rerendering
 const MovieCard = ({length, index, finalMovieElementRef, movieData, url }: MovieCardData) =>  {
+    // Added error function to replace with placeholder image
     const updateToDefaultImg = (e:any) => {
         e.target.src =  `${url}/assets/Slices/placeholder_for_missing_posters.png`;
     }

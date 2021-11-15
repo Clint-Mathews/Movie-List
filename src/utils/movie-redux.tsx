@@ -1,6 +1,7 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 import { MovieDetails } from '../Interfaces/Movie';
 
+// Redux functionalities with movie state and reducer handle changes
 
 const initialState : { movies :MovieDetails[]}  = {
   movies : [],

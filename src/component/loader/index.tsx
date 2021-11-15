@@ -1,5 +1,6 @@
 import React from 'react'
 
+// Loader on component and API loads
 function Loader() {
     return (
         <div className="flex justify-center items-center bg-black h-screen">

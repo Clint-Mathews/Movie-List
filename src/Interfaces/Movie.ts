@@ -1,3 +1,4 @@
+// Interfaces 
 export interface MovieDetails {
   name: string;
   img: string;
