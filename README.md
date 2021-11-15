@@ -1,46 +1,25 @@
-# Getting Started with Create React App
+# Movie List (Mobile View)
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+Movie List is a react movie listing page implemented for Mobile Resolutions only.
 
-## Available Scripts
+Project is created using Create-React-App, Tailwind & Redux.
 
-In the project directory, you can run:
+To Run the project  : yarn start / npm start
 
-### `yarn start`
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+Redux : Used for the storing main movie listing data.
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+Tailwind : Used for styling.
 
-### `yarn test`
+Functional components with react hooks used.
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+No React routing added as its a single page and the default loads the main listing.
 
-### `yarn build`
+Component Lazy loaded and infinte scroll implemeneted for listing page.
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+Deployed via Github pages : https://clint-mathews.github.io/Movie-List
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `yarn eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
-
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
+Further updates needed : 
+1. Writing Unit tests
+2. The search functionality and reset seems a bit funky, need to smooth it out.
+3. Implement the page for every resolution.
