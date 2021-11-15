@@ -18,3 +18,8 @@ No React routing added as its a single page and the default loads the main listi
 Component Lazy loaded and infinte scroll implemeneted for listing page.
 
 Deployed via Github pages : https://clint-mathews.github.io/Movie-List
+
+Further updates needed : 
+1. Writing Unit tests
+2. The search functionality and reset seems a bit funky, need to smooth it out.
+3. Implement the page for every resolution.
