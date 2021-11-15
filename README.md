@@ -15,3 +15,5 @@ Functional components with react hooks used.
 No React routing added as its a single page and the default loads the main listing.
 
 Component Lazy loaded and infinte scroll implemeneted for listing page.
+
+Deployed via Github pages : https://clint-mathews.github.io/Movie-List
