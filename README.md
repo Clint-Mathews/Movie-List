@@ -1,6 +1,7 @@
-# Movie List
+# Movie List (Mobile View)
 
-Movie List is a react movie listing page,
+Movie List is a react movie listing page implemented for Mobile Resolutions only.
+
 Project is created using Create-React-App, Tailwind & Redux.
 
 To Run the project  : yarn start / npm start
