@@ -1,4 +1,4 @@
-# Movie List (Mobile View)
+# Movie List (Mobile View Only)
 
 Movie List is a react movie listing page implemented for Mobile Resolutions only.
 
